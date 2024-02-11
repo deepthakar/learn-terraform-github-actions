@@ -52,15 +52,7 @@ resource "aws_instance" "web" {
               EOF
 }
 
-resource "aws_vpc" "main" {
- cidr_block = "10.0.0.0/16"
- 
- tags = {
-   Name = "Project VPC"
- }
-}
-
-resource "aws_security_group" "main" {
+resource "aws_security_group" "web-sg" {
   name = "${random_pet.sg.id}-sg"
   ingress {
     from_port   = 8080
